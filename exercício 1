@@ -1,0 +1,65 @@
+public class Documento
+{
+    public string Titulo { get; set; }
+    public string Autor { get; set; }
+    public srtring DataCriacao { get; set; }
+
+    // metodo virtual que pode ser sobrescrito nas classes filhas
+    public virtual void Imprimir()
+    {
+        Console.WriteLine($"Título: {Titulo}");
+        Console.WriteLine($"Autor: {Autor}");
+        Console.WriteLine($"Data de Criação: {DataCriacao}");
+    }
+    public virtual string ConteudoFormatado()
+    {
+        Console.WriteLine("Documento: {Titulo} - por {Autor}");
+    }
+}
+public class DocumentoTexto : Documento
+{
+    public override void Imprimir()
+    {
+        Console.WriteLine("Documento de Texto");
+    }
+
+    public override string ConteudoFormatado()
+    {
+        Console.WriteLine("Documento: {Titulo} - por {Autor}"); // não oq era pra fazer de diferente
+    }
+    public void ContarPalavras()
+    {
+    }
+}
+public class DocumentoHTML : Documento
+{
+    public override void Imprimir()
+    {
+        Console.WriteLine("Documento HTML");
+    }
+
+    public override string ConteudoFormatado()
+    {
+        Console.WriteLine("Documento: {Titulo} - por {Autor}");
+    }
+        public void AdicionarEstilo(string CSS)
+    {
+      css = CSS;
+    }
+}
+public class DocumentoPDF : Documento
+{
+    public override void Imprimir()
+    {
+        Console.WriteLine("Documento PDF");
+    }
+
+    public override string ConteudoFormatado()
+    {
+        Console.WriteLine("Documento: {Titulo} - por {Autor}");
+    }
+        public void AdicionarMarcaDagua()
+    {
+      marcadagua = img;
+    }
+}
