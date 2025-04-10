@@ -1,0 +1,86 @@
+using System;
+
+public class Notificacao
+{
+    // Propriedades
+    public string Destinatario { get; set; }
+    public string Mensagem { get; set; }
+    public DateTime DataEnvio { get; set; }
+
+    // Método virtual Enviar
+    public virtual void Enviar()
+    {
+        Console.WriteLine("Notificação enviada.");
+    }
+
+    // Método virtual FormatarMensagem
+    public virtual string FormatarMensagem()
+    {
+        return $"Para: {Destinatario} - Mensagem: {Mensagem} - Enviado em: {DataEnvio}";
+    }
+}
+// Notificação por Email
+public class NotificacaoEmail : Notificacao
+{
+    public NotificacaoEmail(string destinatario, string mensagem)
+    {
+        Destinatario = destinatario;
+        Mensagem = mensagem;
+        DataEnvio = DateTime.Now;
+    }
+
+    public override void Enviar()
+    {
+        Console.WriteLine("Enviando notificação por Email...");
+        Console.WriteLine(FormatarMensagem());
+    }
+
+    public override string FormatarMensagem()
+    {
+        return $"[EMAIL]\nPara: {Destinatario}\nAssunto: Notificação\nMensagem: {Mensagem}\nData: {DataEnvio}";
+    }
+}
+
+// Notificação por SMS
+public class NotificacaoSMS : Notificacao
+{
+    public NotificacaoSMS(string destinatario, string mensagem)
+    {
+        Destinatario = destinatario;
+        Mensagem = mensagem;
+        DataEnvio = DateTime.Now;
+    }
+
+    public override void Enviar()
+    {
+        Console.WriteLine("Enviando notificação por SMS...");
+        Console.WriteLine(FormatarMensagem());
+    }
+
+    public override string FormatarMensagem()
+    {
+        return $"[SMS] Para: {Destinatario} - Mensagem: {Mensagem} - Enviado em: {DataEnvio}";
+    }
+}
+
+// Notificação Push
+public class NotificacaoPush : Notificacao
+{
+    public NotificacaoPush(string destinatario, string mensagem)
+    {
+        Destinatario = destinatario;
+        Mensagem = mensagem;
+        DataEnvio = DateTime.Now;
+    }
+
+    public override void Enviar()
+    {
+        Console.WriteLine("Enviando notificação Push...");
+        Console.WriteLine(FormatarMensagem());
+    }
+
+    public override string FormatarMensagem()
+    {
+        return $"[PUSH]\nUsuário: {Destinatario}\nNotificação: {Mensagem}\nHora: {DataEnvio}";
+    }
+}
