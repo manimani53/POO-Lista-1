@@ -1,0 +1,23 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Instâncias diretas
+        RegistroSobrescrito sobrescrito = new RegistroSobrescrito();
+        RegistroOculto oculto = new RegistroOculto();
+
+        Console.WriteLine("Chamadas com variáveis do tipo derivado:");
+        sobrescrito.Salvar(); // Chama o sobrescrito
+        oculto.Salvar();      // Chama o oculto
+
+        // Atribuição às variáveis do tipo base
+        RegistroBase baseSobrescrito = sobrescrito;
+        RegistroBase baseOculto = oculto;
+
+        Console.WriteLine("\nChamadas com variáveis do tipo base:");
+        baseSobrescrito.Salvar(); // Chama o sobrescrito (polimorfismo)
+        baseOculto.Salvar();      // Chama o da classe base (método oculto)
+    }
+}
